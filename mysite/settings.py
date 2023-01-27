@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -130,4 +131,9 @@ AUTH_USER_MODEL = 'account.UserData' # Tells Django that we'd like to use our cu
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework_simplejwt.authentication.JWTAuthentication',)
     # Astaghfirullah! Value tanpa tanda kurung munculnya error. Tidak sesuai tutorial.
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60), # after 60 minutes the access token expires.
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=30) # after 30 days, the refresh token is expired and user need to login again.
 }
